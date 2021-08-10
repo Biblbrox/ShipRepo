@@ -27,7 +27,7 @@ def main():
 
     model = init_detector(args.config, args.checkpoint, device=device)
 
-    camera = cv2.VideoCapture(args.camera_id)
+    camera = cv2.VideoCapture(args.camera_id, cv2.CAP_V4L)
 
     print('Press "Esc", "q" or "Q" to exit.')
     while True:
@@ -39,7 +39,7 @@ def main():
             break
 
         model.show_result(
-            img, result, score_thr=args.score_thr, wait_time=1, show=True)
+            img, result, score_thr=args.score_thr, wait_time=10, show=True)
 
 
 if __name__ == '__main__':
